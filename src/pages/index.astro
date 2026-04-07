@@ -1,11 +1,832 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main class="page-container">
+		<!-- 设置按钮 -->
+		<button class="settings-button" id="settingsBtn">
+			⚙️
+		</button>
+
+		<!-- 设置面板 -->
+		<div class="settings-panel" id="settingsPanel">
+			<div class="settings-header">
+				<h3>设置</h3>
+				<button class="close-btn" id="closeBtn">✕</button>
+			</div>
+
+			<div class="settings-content">
+				<!-- 夜间模式开关 -->
+				<div class="setting-item">
+					<span class="setting-label">🌙 夜间模式</span>
+					<label class="switch">
+						<input type="checkbox" id="darkModeToggle">
+						<span class="slider"></span>
+					</label>
+				</div>
+
+				<!-- 背景选择 -->
+				<div class="setting-item">
+					<span class="setting-label">🖼️ 背景图片</span>
+				</div>
+				<div class="background-options">
+					<div class="bg-option" data-bg="1">
+						<div class="bg-preview bg-1"></div>
+						<span>默认</span>
+					</div>
+					<div class="bg-option" data-bg="2">
+						<div class="bg-preview bg-2"></div>
+						<span>风景</span>
+					</div>
+					<div class="bg-option" data-bg="3">
+						<div class="bg-preview bg-3"></div>
+						<span>简约</span>
+					</div>
+					<div class="bg-option" data-bg="4">
+						<div class="bg-preview bg-4"></div>
+						<span>渐变</span>
+					</div>
+				</div>
+
+				<!-- 自定义背景 -->
+				<div class="setting-item" style="margin-top: 1.5rem;">
+					<span class="setting-label">📷 自定义背景</span>
+				</div>
+				<div class="custom-bg-section">
+					<input type="text" id="customBgUrl" placeholder="输入图片URL" class="custom-input">
+					<button id="applyCustomBg" class="apply-btn">应用</button>
+					<label for="customBgFile" class="upload-btn">
+						📁 上传图片
+						<input type="file" id="customBgFile" accept="image/*" style="display: none;">
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- 头部介绍区 -->
+		<section class="hero-section">
+			<h1 class="greeting">你好，我是<span class="name-highlight">薛佳怡</span></h1>
+			<div class="intro-text">
+				<p>首都体育学院体育经济与管理专业</p>
+				<p>擅长KOL达人孵化、热点追踪及活动策划</p>
+				<p>有丰富自媒体运营经验</p>
+				<p class="email">邮箱：15810679844@163.com</p>
+			</div>
+		</section>
+
+		<!-- 板块标题 -->
+		<section class="section-title">
+			<h2>作品集模块</h2>
+			<div class="title-underline"></div>
+		</section>
+
+		<!-- 四个板块卡片 -->
+		<section class="cards-grid">
+			<a href="/experience" class="project-card">
+				<div class="card-image">
+					<div class="image-placeholder">👤</div>
+				</div>
+				<h3 class="card-title">个人经历</h3>
+				<div class="card-tags">
+					<span class="tag">教育背景</span>
+					<span class="tag">实习经历</span>
+				</div>
+			</a>
+
+			<a href="/operation" class="project-card">
+				<div class="card-image">
+					<div class="image-placeholder">📱</div>
+				</div>
+				<h3 class="card-title">运营经历</h3>
+				<div class="card-tags">
+					<span class="tag">内容运营</span>
+					<span class="tag">用户增长</span>
+				</div>
+			</a>
+
+			<a href="/projects" class="project-card">
+				<div class="card-image">
+					<div class="image-placeholder">🎨</div>
+				</div>
+				<h3 class="card-title">项目经历</h3>
+				<div class="card-tags">
+					<span class="tag">活动策划</span>
+					<span class="tag">品牌合作</span>
+				</div>
+			</a>
+
+			<a href="/skills" class="project-card">
+				<div class="card-image">
+					<div class="image-placeholder">⚡</div>
+				</div>
+				<h3 class="card-title">其他技能</h3>
+				<div class="card-tags">
+					<span class="tag">设计工具</span>
+					<span class="tag">数据分析</span>
+				</div>
+			</a>
+		</section>
+	</main>
 </Layout>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html, body {
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	body {
+		background: url('/background.jpg') no-repeat center center fixed;
+		background-size: cover;
+		font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+		color: #333;
+		position: relative;
+	}
+
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.7);
+		z-index: -1;
+	}
+
+	.page-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem 2rem;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+	}
+
+	/* 设置按钮 */
+	.settings-button {
+		position: fixed;
+		top: 2rem;
+		right: 2rem;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.9);
+		border: none;
+		font-size: 1.5rem;
+		cursor: pointer;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		transition: all 0.3s ease;
+		z-index: 1000;
+	}
+
+	.settings-button:hover {
+		transform: rotate(90deg) scale(1.1);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	/* 设置面板 */
+	.settings-panel {
+		position: fixed;
+		top: 50%;
+		right: 2rem;
+		transform: translateY(-50%) translateX(400px);
+		width: 320px;
+		background: white;
+		border-radius: 16px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		opacity: 0;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		z-index: 999;
+	}
+
+	.settings-panel.active {
+		transform: translateY(-50%) translateX(0);
+		opacity: 1;
+	}
+
+	.settings-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem;
+		border-bottom: 1px solid #e8e8e8;
+	}
+
+	.settings-header h3 {
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+
+	.close-btn {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		color: #666;
+		cursor: pointer;
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 8px;
+		transition: all 0.2s ease;
+	}
+
+	.close-btn:hover {
+		background: #f0f0f0;
+		color: #1a1a1a;
+	}
+
+	.settings-content {
+		padding: 1.5rem;
+	}
+
+	.setting-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.setting-label {
+		font-size: 1rem;
+		font-weight: 500;
+		color: #333;
+	}
+
+	/* 开关按钮 */
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 50px;
+		height: 26px;
+	}
+
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: #ccc;
+		transition: 0.3s;
+		border-radius: 26px;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: "";
+		height: 20px;
+		width: 20px;
+		left: 3px;
+		bottom: 3px;
+		background: white;
+		transition: 0.3s;
+		border-radius: 50%;
+	}
+
+	input:checked + .slider {
+		background: #4a90e2;
+	}
+
+	input:checked + .slider:before {
+		transform: translateX(24px);
+	}
+
+	/* 背景选项 */
+	.background-options {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.bg-option {
+		cursor: pointer;
+		text-align: center;
+		transition: all 0.3s ease;
+	}
+
+	.bg-option:hover {
+		transform: translateY(-4px);
+	}
+
+	.bg-preview {
+		width: 100%;
+		height: 80px;
+		border-radius: 8px;
+		margin-bottom: 0.5rem;
+		border: 3px solid transparent;
+		transition: all 0.3s ease;
+	}
+
+	.bg-option.active .bg-preview {
+		border-color: #4a90e2;
+	}
+
+	.bg-option span {
+		font-size: 0.85rem;
+		color: #666;
+		font-weight: 500;
+	}
+
+	/* 背景预览样式 */
+	.bg-1 {
+		background: url('/background.jpg') center/cover;
+	}
+
+	.bg-2 {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	}
+
+	.bg-3 {
+		background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	}
+
+	.bg-4 {
+		background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+	}
+
+	/* 自定义背景区域 */
+	.custom-bg-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.custom-input {
+		width: 100%;
+		padding: 0.7rem;
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		font-family: 'Noto Sans SC', sans-serif;
+		transition: all 0.3s ease;
+	}
+
+	.custom-input:focus {
+		outline: none;
+		border-color: #4a90e2;
+		box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+	}
+
+	.apply-btn, .upload-btn {
+		padding: 0.7rem 1.2rem;
+		border: none;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		font-family: 'Noto Sans SC', sans-serif;
+	}
+
+	.apply-btn {
+		background: #4a90e2;
+		color: white;
+	}
+
+	.apply-btn:hover {
+		background: #3a7bc8;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+	}
+
+	.upload-btn {
+		background: #f0f4f8;
+		color: #333;
+		text-align: center;
+		display: block;
+	}
+
+	.upload-btn:hover {
+		background: #e0e8f0;
+		transform: translateY(-2px);
+	}
+
+	/* 夜间模式样式 */
+	body.dark-mode {
+		color: #e8e8e8;
+	}
+
+	body.dark-mode::before {
+		background: rgba(20, 20, 30, 0.85);
+	}
+
+	body.dark-mode .project-card {
+		background: rgba(40, 40, 50, 0.85);
+		border-color: #444;
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .card-title {
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .tag {
+		background: rgba(74, 144, 226, 0.2);
+		color: #6eb3ff;
+	}
+
+	body.dark-mode .greeting,
+	body.dark-mode .section-title h2 {
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .intro-text,
+	body.dark-mode .email {
+		color: #bbb;
+	}
+
+	body.dark-mode .settings-panel {
+		background: #2a2a3a;
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .settings-header {
+		border-bottom-color: #444;
+	}
+
+	body.dark-mode .settings-header h3,
+	body.dark-mode .setting-label {
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .close-btn {
+		color: #bbb;
+	}
+
+	body.dark-mode .close-btn:hover {
+		background: #3a3a4a;
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .custom-input {
+		background: #3a3a4a;
+		border-color: #555;
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .custom-input:focus {
+		border-color: #4a90e2;
+		background: #2a2a3a;
+	}
+
+	body.dark-mode .upload-btn {
+		background: #3a3a4a;
+		color: #e8e8e8;
+	}
+
+	body.dark-mode .upload-btn:hover {
+		background: #4a4a5a;
+	}
+
+	/* 头部个人介绍区 */
+	.hero-section {
+		text-align: center;
+		padding: 2rem 0 2.5rem;
+	}
+
+	.greeting {
+		font-size: 2rem;
+		font-weight: 400;
+		color: #1a1a1a;
+		margin-bottom: 1rem;
+	}
+
+	.name-highlight {
+		color: #4a90e2;
+		font-weight: 600;
+	}
+
+	.intro-text {
+		font-size: 1rem;
+		line-height: 1.8;
+		color: #666;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.intro-text p {
+		margin: 0.5rem 0;
+	}
+
+	.email {
+		margin-top: 1rem;
+		color: #888;
+		font-size: 0.95rem;
+	}
+
+	/* 板块标题 */
+	.section-title {
+		text-align: center;
+		margin: 2rem 0 1.5rem;
+	}
+
+	.section-title h2 {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: #1a1a1a;
+		margin-bottom: 0.6rem;
+	}
+
+	.title-underline {
+		width: 60px;
+		height: 3px;
+		background: #4a90e2;
+		margin: 0 auto;
+		border-radius: 2px;
+	}
+
+	/* 卡片网格 */
+	.cards-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.2rem;
+		margin-bottom: 2rem;
+	}
+
+	/* 项目卡片 */
+	.project-card {
+		display: block;
+		background: rgba(255, 255, 255, 0.95);
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		cursor: pointer;
+		border: 1px solid #e8e8e8;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.project-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+	}
+
+	.card-image {
+		width: 100%;
+		height: 150px;
+		background: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.image-placeholder {
+		font-size: 4rem;
+		opacity: 0.6;
+		transition: all 0.3s ease;
+	}
+
+	.project-card:hover .image-placeholder {
+		transform: scale(1.1);
+		opacity: 0.8;
+	}
+
+	/* 不同卡片的背景色 */
+	.project-card:nth-child(1) .card-image,
+	.project-card:nth-child(2) .card-image,
+	.project-card:nth-child(3) .card-image,
+	.project-card:nth-child(4) .card-image {
+		background: transparent;
+	}
+
+	.project-card:nth-child(1) .image-placeholder,
+	.project-card:nth-child(2) .image-placeholder,
+	.project-card:nth-child(3) .image-placeholder,
+	.project-card:nth-child(4) .image-placeholder {
+		opacity: 0.7;
+	}
+
+	.card-title {
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 1rem 1rem 0.6rem;
+		text-align: center;
+	}
+
+	.card-description {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #666;
+		margin: 0 1.5rem 1rem;
+	}
+
+	.card-tags {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+		margin: 0 1rem 1rem;
+		justify-content: center;
+	}
+
+	.tag {
+		display: inline-block;
+		padding: 0.25rem 0.7rem;
+		background: #f0f4f8;
+		color: #4a90e2;
+		border-radius: 16px;
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+
+	/* 响应式设计 */
+	@media (max-width: 768px) {
+		.page-container {
+			padding: 2rem 1rem;
+		}
+
+		.greeting {
+			font-size: 1.8rem;
+		}
+
+		.intro-text {
+			font-size: 0.9rem;
+		}
+
+		.section-title h2 {
+			font-size: 1.6rem;
+		}
+
+		.cards-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+
+	@media (min-width: 769px) and (max-width: 1200px) {
+		.cards-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1201px) {
+		.cards-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+</style>
+
+<script>
+	// 设置面板逻辑
+	const settingsBtn = document.getElementById('settingsBtn');
+	const settingsPanel = document.getElementById('settingsPanel');
+	const closeBtn = document.getElementById('closeBtn');
+	const darkModeToggle = document.getElementById('darkModeToggle');
+	const bgOptions = document.querySelectorAll('.bg-option');
+
+	// 从 localStorage 加载设置
+	const loadSettings = () => {
+		// 加载夜间模式
+		const darkMode = localStorage.getItem('darkMode') === 'true';
+		if (darkMode) {
+			document.body.classList.add('dark-mode');
+			darkModeToggle.checked = true;
+		}
+
+		// 加载背景
+		const bgChoice = localStorage.getItem('background') || '1';
+		if (bgChoice === 'custom') {
+			const customUrl = localStorage.getItem('customBackgroundUrl');
+			if (customUrl) {
+				document.body.style.backgroundImage = `url('${customUrl}')`;
+			}
+		} else {
+			setBackground(bgChoice);
+			bgOptions.forEach(option => {
+				if (option.dataset.bg === bgChoice) {
+					option.classList.add('active');
+				}
+			});
+		}
+	};
+
+	// 打开/关闭设置面板
+	settingsBtn.addEventListener('click', () => {
+		settingsPanel.classList.toggle('active');
+	});
+
+	closeBtn.addEventListener('click', () => {
+		settingsPanel.classList.remove('active');
+	});
+
+	// 点击面板外部关闭
+	document.addEventListener('click', (e) => {
+		if (!settingsPanel.contains(e.target) && !settingsBtn.contains(e.target)) {
+			settingsPanel.classList.remove('active');
+		}
+	});
+
+	// 夜间模式切换
+	darkModeToggle.addEventListener('change', (e) => {
+		if (e.target.checked) {
+			document.body.classList.add('dark-mode');
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			document.body.classList.remove('dark-mode');
+			localStorage.setItem('darkMode', 'false');
+		}
+	});
+
+	// 背景切换
+	const setBackground = (bgNum) => {
+		const body = document.body;
+		body.style.backgroundImage = '';
+
+		switch(bgNum) {
+			case '1':
+				body.style.backgroundImage = "url('/background.jpg')";
+				break;
+			case '2':
+				body.style.backgroundImage = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+				break;
+			case '3':
+				body.style.backgroundImage = "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)";
+				break;
+			case '4':
+				body.style.backgroundImage = "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)";
+				break;
+		}
+	};
+
+	bgOptions.forEach(option => {
+		option.addEventListener('click', () => {
+			const bgNum = option.dataset.bg;
+
+			// 更新选中状态
+			bgOptions.forEach(opt => opt.classList.remove('active'));
+			option.classList.add('active');
+
+			// 设置背景
+			setBackground(bgNum);
+
+			// 保存到 localStorage
+			localStorage.setItem('background', bgNum);
+		});
+	});
+
+	// 页面加载时应用设置
+	loadSettings();
+
+	// 自定义背景功能
+	const customBgUrl = document.getElementById('customBgUrl');
+	const applyCustomBg = document.getElementById('applyCustomBg');
+	const customBgFile = document.getElementById('customBgFile');
+
+	// 应用URL背景
+	applyCustomBg.addEventListener('click', () => {
+		const url = customBgUrl.value.trim();
+		if (url) {
+			document.body.style.backgroundImage = `url('${url}')`;
+			localStorage.setItem('background', 'custom');
+			localStorage.setItem('customBackgroundUrl', url);
+
+			// 取消预设背景的选中状态
+			bgOptions.forEach(opt => opt.classList.remove('active'));
+		}
+	});
+
+	// 上传本地图片
+	customBgFile.addEventListener('change', (e) => {
+		const file = e.target.files[0];
+		if (file && file.type.startsWith('image/')) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				const imageData = event.target.result;
+				document.body.style.backgroundImage = `url('${imageData}')`;
+				localStorage.setItem('background', 'custom');
+				localStorage.setItem('customBackgroundUrl', imageData);
+
+				// 取消预设背景的选中状态
+				bgOptions.forEach(opt => opt.classList.remove('active'));
+			};
+			reader.readAsDataURL(file);
+		}
+	});
+</script>

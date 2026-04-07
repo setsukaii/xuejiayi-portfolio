@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main class="detail-page">
+		<div class="back-button">
+			<a href="/">← 返回首页</a>
+		</div>
+
+		<!-- 资格证书 -->
+		<section class="content-section">
+			<h2 class="section-title">
+				<span class="icon">🏆</span>
+				资格证书
+			</h2>
+			<div class="certificates-row">
+				<span class="certificate-badge">📝 普通话一级乙等</span>
+				<span class="certificate-badge">💻 计算机二级</span>
+				<span class="certificate-badge">🌍 大学英语四级</span>
+				<span class="certificate-badge">🏀 国家二级篮球运动员</span>
+				<span class="certificate-badge">🎽 国家二级田径裁判员</span>
+			</div>
+		</section>
+
+		<!-- 专业技能 -->
+		<section class="content-section">
+			<h2 class="section-title">
+				<span class="icon">⚡</span>
+				专业技能
+			</h2>
+
+			<div class="skill-category">
+				<h3 class="category-title">办公软件</h3>
+				<div class="skill-tags">
+					<span class="skill-tag office">Microsoft Word</span>
+					<span class="skill-tag office">Microsoft Excel</span>
+					<span class="skill-tag office">Microsoft PowerPoint</span>
+					<span class="skill-tag office">WPS Office</span>
+				</div>
+			</div>
+
+			<div class="skill-category">
+				<h3 class="category-title">设计软件</h3>
+				<div class="skill-tags">
+					<span class="skill-tag design">Adobe Photoshop</span>
+					<span class="skill-tag design">Adobe Illustrator</span>
+					<span class="skill-tag design">剪映</span>
+					<span class="skill-tag design">即梦</span>
+				</div>
+			</div>
+
+			<div class="skill-category">
+				<h3 class="category-title">数据分析</h3>
+				<div class="skill-tags">
+					<span class="skill-tag data">SQL</span>
+					<span class="skill-tag data">SPSS</span>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		background: url('/background.jpg') no-repeat center center fixed;
+		background-size: cover;
+		font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+		color: #333;
+		position: relative;
+	}
+
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.7);
+		z-index: -1;
+	}
+
+	.detail-page {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 1.5rem;
+		min-height: 100vh;
+	}
+
+	.back-button {
+		margin-bottom: 2rem;
+	}
+
+	.back-button a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #4a90e2;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+	}
+
+	.back-button a:hover {
+		background: rgba(74, 144, 226, 0.1);
+		transform: translateX(-5px);
+	}
+
+	.detail-header {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.detail-header h1 {
+		font-size: 1.8rem;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+
+	.subtitle {
+		font-size: 0.95rem;
+		color: #666;
+	}
+
+	.content-section {
+		margin-bottom: 3rem;
+	}
+
+	.section-title {
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin-bottom: 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.section-title .icon {
+		font-size: 1.2rem;
+	}
+
+	/* 证书行 */
+	.certificates-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		background: white;
+		padding: 1.5rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.certificate-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.6rem 1.2rem;
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+		color: white;
+		border-radius: 20px;
+		font-size: 0.9rem;
+		font-weight: 500;
+		box-shadow: 0 2px 8px rgba(240, 147, 251, 0.3);
+		transition: all 0.3s ease;
+		cursor: default;
+	}
+
+	.certificate-badge:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+	}
+
+	/* 技能分类 */
+	.skill-category {
+		background: white;
+		padding: 1.3rem;
+		border-radius: 10px;
+		margin-bottom: 1.2rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.category-title {
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: #2c3e50;
+		margin-bottom: 1rem;
+		padding-bottom: 0.6rem;
+		border-bottom: 2px solid #f0f0f0;
+	}
+
+	.skill-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+	}
+
+	.skill-tag {
+		padding: 0.5rem 1rem;
+		border-radius: 16px;
+		font-size: 0.85rem;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		cursor: default;
+	}
+
+	.skill-tag.office {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+	}
+
+	.skill-tag.design {
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+		color: white;
+	}
+
+	.skill-tag.data {
+		background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+		color: white;
+	}
+
+	.skill-tag:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	/* 响应式设计 */
+	@media (max-width: 768px) {
+		.detail-page {
+			padding: 1rem;
+		}
+
+		.detail-header h1 {
+			font-size: 2rem;
+		}
+
+		.section-title {
+			font-size: 1.5rem;
+		}
+
+		.certificates-row {
+			padding: 1rem;
+		}
+
+		.certificate-badge {
+			font-size: 0.85rem;
+			padding: 0.5rem 1rem;
+		}
+
+		.skill-category {
+			padding: 1.5rem;
+		}
+	}
+</style>

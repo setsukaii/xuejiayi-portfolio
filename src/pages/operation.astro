@@ -1,0 +1,305 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main class="detail-page">
+		<div class="back-button">
+			<a href="/">← 返回首页</a>
+		</div>
+
+		<!-- 运营经历 -->
+		<section class="content-section">
+			<h2 class="section-title">
+				<span class="icon">📱</span>
+				运营经历
+			</h2>
+
+			<div class="timeline-item">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<div class="time-period">2024.05 - 至今</div>
+					<h3>小红书-戏剧类垂直自媒体账号运营</h3>
+					<div class="details">
+						<h4>账号运营</h4>
+						<p>搭建万粉戏剧类垂直内容账号，独立完成账号内容体系与更新节奏设计，开展专题采访活动，单年累计阅读量 500w+，打造 10+ 单篇阅读量 20w+ 的爆款内容，账号累计点赞量 10w+，同时搭建并运营社群人数 500+。</p>
+
+						<h4>商务拓展</h4>
+						<p>参与 bilibili 独家纪录片《但是还有戏剧》整季线上曝光支持；累计宣传戏剧项目 100+ 部，覆盖话剧、音乐剧多品类，助力剧目线上曝光与转化。对接并维护全国多家剧院及演出主办方。</p>
+
+						<h4>成果展示</h4>
+						<div class="showcase-images">
+							<div class="showcase-column">
+								<img src="/achievement1.jpg" alt="运营成果展示1" class="showcase-img">
+								<img src="/achievement3.jpg" alt="运营成果展示3" class="showcase-img">
+							</div>
+							<div class="showcase-column">
+								<img src="/achievement2.jpg" alt="运营成果展示2" class="showcase-img">
+							</div>
+						</div>
+
+						<div class="achievement-cards">
+							<div class="achievement-card">
+								<div class="number">500万+</div>
+								<div class="label">年累计阅读量</div>
+							</div>
+							<div class="achievement-card">
+								<div class="number">10万+</div>
+								<div class="label">账号总点赞量</div>
+							</div>
+							<div class="achievement-card">
+								<div class="number">100+</div>
+								<div class="label">合作戏剧项目</div>
+							</div>
+							<div class="achievement-card">
+								<div class="number">500+</div>
+								<div class="label">社群活跃用户</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		background: url('/background.jpg') no-repeat center center fixed;
+		background-size: cover;
+		font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+		color: #333;
+		position: relative;
+	}
+
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.7);
+		z-index: -1;
+	}
+
+	.detail-page {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 1.5rem;
+		min-height: 100vh;
+	}
+
+	.back-button {
+		margin-bottom: 2rem;
+	}
+
+	.back-button a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #4a90e2;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+	}
+
+	.back-button a:hover {
+		background: rgba(74, 144, 226, 0.1);
+		transform: translateX(-5px);
+	}
+
+	.detail-header {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.detail-header h1 {
+		font-size: 1.8rem;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+
+	.subtitle {
+		font-size: 0.95rem;
+		color: #666;
+	}
+
+	.content-section {
+		margin-bottom: 3rem;
+	}
+
+	.section-title {
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin-bottom: 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.section-title .icon {
+		font-size: 1.2rem;
+	}
+
+	.timeline-item {
+		position: relative;
+		padding-left: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.timeline-dot {
+		position: absolute;
+		left: 0;
+		top: 0.3rem;
+		width: 14px;
+		height: 14px;
+		background: #4a90e2;
+		border-radius: 50%;
+		box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+	}
+
+	.timeline-content {
+		background: white;
+		padding: 1.2rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.time-period {
+		color: #4a90e2;
+		font-weight: 600;
+		font-size: 0.85rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.timeline-content h3 {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin-bottom: 1rem;
+	}
+
+	.details {
+		line-height: 1.8;
+	}
+
+	.details h4 {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: #2c3e50;
+		margin: 1rem 0 0.5rem;
+	}
+
+	.details h4:first-child {
+		margin-top: 0;
+	}
+
+	.details p {
+		color: #555;
+		font-size: 0.9rem;
+		line-height: 1.6;
+		margin-bottom: 0.6rem;
+	}
+
+	/* 成果展示图片 */
+	.showcase-images {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		margin: 1rem 0 1.5rem;
+	}
+
+	.showcase-column {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.showcase-img {
+		width: 100%;
+		height: auto;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+		cursor: pointer;
+	}
+
+	.showcase-img:hover {
+		transform: scale(1.02);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+	}
+
+	.achievement-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.achievement-card {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		padding: 1rem 0.8rem;
+		border-radius: 10px;
+		text-align: center;
+		color: white;
+		box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+	}
+
+	.achievement-card .number {
+		font-size: 1.4rem;
+		font-weight: 700;
+		margin-bottom: 0.4rem;
+	}
+
+	.achievement-card .label {
+		font-size: 0.8rem;
+		opacity: 0.95;
+	}
+
+	/* 响应式设计 */
+	@media (max-width: 768px) {
+		.detail-page {
+			padding: 1rem;
+		}
+
+		.detail-header h1 {
+			font-size: 2rem;
+		}
+
+		.section-title {
+			font-size: 1.5rem;
+		}
+
+		.timeline-item {
+			padding-left: 2rem;
+		}
+
+		.timeline-content {
+			padding: 1.2rem;
+		}
+
+		.showcase-images {
+			grid-template-columns: 1fr;
+		}
+
+		.showcase-column {
+			gap: 1rem;
+		}
+
+		.achievement-cards {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>
