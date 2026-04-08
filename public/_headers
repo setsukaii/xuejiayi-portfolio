@@ -1,0 +1,17 @@
+# 缓存策略优化
+
+# HTML 文件：不缓存，每次都检查最新版本
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# CSS 和 JS 文件（Astro 自动添加哈希）：长期缓存
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 图片文件：使用查询参数版本控制，短期缓存
+/*.jpg
+  Cache-Control: public, max-age=3600
+/*.png
+  Cache-Control: public, max-age=3600
+/*.webp
+  Cache-Control: public, max-age=3600
