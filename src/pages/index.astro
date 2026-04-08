@@ -157,14 +157,14 @@ import Layout from '../layouts/Layout.astro';
 	/* 响应式背景图片：手机用小图，桌面用大图 */
 	@media (max-width: 768px) {
 		body {
-			background: url('/xuejiayi-portfolio/background-mobile.jpg') no-repeat center center fixed;
+			background: url('/background-mobile.jpg') no-repeat center center fixed;
 			background-size: cover;
 		}
 	}
 
 	@media (min-width: 769px) {
 		body {
-			background: url('/xuejiayi-portfolio/background.jpg') no-repeat center center fixed;
+			background: url('/background.jpg') no-repeat center center fixed;
 			background-size: cover;
 		}
 	}
@@ -369,7 +369,7 @@ import Layout from '../layouts/Layout.astro';
 
 	/* 背景预览样式 - 使用移动端小图加快预览加载 */
 	.bg-1 {
-		background: url('/xuejiayi-portfolio/background-mobile.jpg') center/cover;
+		background: url('/background-mobile.jpg') center/cover;
 	}
 
 	.bg-2 {
@@ -780,8 +780,8 @@ import Layout from '../layouts/Layout.astro';
 				// 响应式加载：手机用小图，桌面用大图
 				const isMobile = window.innerWidth <= 768;
 				const bgImage = isMobile
-					? '/xuejiayi-portfolio/background-mobile.jpg'
-					: '/xuejiayi-portfolio/background.jpg';
+					? '/background-mobile.jpg'
+					: '/background.jpg';
 				body.style.backgroundImage = `url('${bgImage}')`;
 				break;
 			case '2':
