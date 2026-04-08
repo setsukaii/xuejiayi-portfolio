@@ -7,6 +7,10 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+
+		<!-- 预加载背景图片：响应式加载 -->
+		<link rel="preload" as="image" href="/xuejiayi-portfolio/background-mobile.jpg" media="(max-width: 768px)" />
+		<link rel="preload" as="image" href="/xuejiayi-portfolio/background.jpg" media="(min-width: 769px)" />
 	</head>
 	<body>
 		<slot />

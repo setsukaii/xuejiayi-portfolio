@@ -146,11 +146,27 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	body {
-		background: url('/xuejiayi-portfolio/background.jpg') no-repeat center center fixed;
+		/* 默认使用渐变色作为占位背景，提升加载体验 */
+		background: linear-gradient(135deg, #e0e8f0 0%, #c3cfe2 100%);
 		background-size: cover;
 		font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
 		color: #333;
 		position: relative;
+	}
+
+	/* 响应式背景图片：手机用小图，桌面用大图 */
+	@media (max-width: 768px) {
+		body {
+			background: url('/xuejiayi-portfolio/background-mobile.jpg') no-repeat center center fixed;
+			background-size: cover;
+		}
+	}
+
+	@media (min-width: 769px) {
+		body {
+			background: url('/xuejiayi-portfolio/background.jpg') no-repeat center center fixed;
+			background-size: cover;
+		}
 	}
 
 	body::before {
@@ -351,9 +367,9 @@ import Layout from '../layouts/Layout.astro';
 		font-weight: 500;
 	}
 
-	/* 背景预览样式 */
+	/* 背景预览样式 - 使用移动端小图加快预览加载 */
 	.bg-1 {
-		background: url('/xuejiayi-portfolio/background.jpg') center/cover;
+		background: url('/xuejiayi-portfolio/background-mobile.jpg') center/cover;
 	}
 
 	.bg-2 {
@@ -754,14 +770,19 @@ import Layout from '../layouts/Layout.astro';
 		}
 	});
 
-	// 背景切换
+	// 背景切换 - 根据屏幕尺寸选择合适的图片
 	const setBackground = (bgNum) => {
 		const body = document.body;
 		body.style.backgroundImage = '';
 
 		switch(bgNum) {
 			case '1':
-				body.style.backgroundImage = "url('/xuejiayi-portfolio/background.jpg')";
+				// 响应式加载：手机用小图，桌面用大图
+				const isMobile = window.innerWidth <= 768;
+				const bgImage = isMobile
+					? '/xuejiayi-portfolio/background-mobile.jpg'
+					: '/xuejiayi-portfolio/background.jpg';
+				body.style.backgroundImage = `url('${bgImage}')`;
 				break;
 			case '2':
 				body.style.backgroundImage = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
